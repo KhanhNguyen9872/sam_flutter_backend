@@ -1,0 +1,24 @@
+{
+  "name": "sam_flutter_backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd src && node index.js",
+    "dev": "cd src && nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
