@@ -148,6 +148,7 @@ static async login(req, res) {
       
       // Format and return the student information
       const response = {
+        first_name: student.first_name,
         name: student.last_name + ' ' + student.first_name,
         studentId: student.id, // e.g., "MSHV: G16-001"
         email: student.email,
