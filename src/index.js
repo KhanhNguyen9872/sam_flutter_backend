@@ -1,9 +1,14 @@
+const API_VERSION = "v1";
+
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const studentRoutes = require('./routers/studentRoutes');
-const db = require('./utils/db');
 const cors = require('cors');
+const db = require(`./${API_VERSION}/utils/db`);
+
+// Import student routes from the versioned folder
+const studentRoutes = require(`./${API_VERSION}/routers/studentRoutes`);
+const chatbotRoutes = require(`./${API_VERSION}/routers/chatbotRoutes`);
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -12,6 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// Mount the student routes with the version prefix
 
 // Logging middleware to show detail of each request
 app.use((req, res, next) => {
@@ -24,8 +30,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// Use the student routes under the "/students" path
-app.use('/students', studentRoutes);
+app.use(`/api/${API_VERSION}/students`, studentRoutes);
+app.use(`/api/${API_VERSION}/chatbot`, chatbotRoutes);
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Student API backend!');
